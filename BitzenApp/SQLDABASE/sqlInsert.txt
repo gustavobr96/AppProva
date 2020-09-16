@@ -1,0 +1,14 @@
+CREATE TABLE `ger_cliente` (
+  `n_cod_cliente` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `c_nome` varchar(100) DEFAULT NULL,
+  `d_nascimento` datetime DEFAULT NULL,
+  `c_sexo` varchar(1) DEFAULT NULL,
+  `c_cep` varchar(9) DEFAULT NULL,
+  `c_endereco` varchar(100) DEFAULT NULL,
+  `n_numero` int DEFAULT NULL,
+  `c_complemento` varchar(100) DEFAULT NULL,
+  `c_estado` varchar(2) DEFAULT NULL,
+  `c_cidade` varchar(100) DEFAULT NULL,
+  `c_bairro` varchar(100) DEFAULT NULL,
+  UNIQUE KEY `n_cod_cliente` (`n_cod_cliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

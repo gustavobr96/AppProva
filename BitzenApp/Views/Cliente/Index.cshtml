@@ -1,0 +1,193 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Cadastro de Veículo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Consulta de Clientes</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <button class="btn btn-success text-white" id="btnNovoRegistro"><i class="fa fa-plus pull-right"></i> Novo Registro</a></button>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header bg-white font-weight-bold">
+        Clientes Cadastrados
+    </div>
+    <div class="card-body">
+        <div class="table-responsive" id="destroy">
+            <table class="table table-striped" id="ClientesCadastrados">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Nascimento</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Cep</th>
+                        <th scope="col">Endereço</th>
+                        <th scope="col">Complemento</th>
+                        <th scope="col">Bairro</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col" style="min-width:80px!important">Opções</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class=" modal fade modal_confirm" id="modalAlterarRegistro">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Aterar Clientes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nome<b>*</b></label>
+                            <input type="text" class="form-control" name="txtNomeAlt" id="txtNomeAlt" />
+                            <input type="hidden" id="hdnId" value="0" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Data de Nascimento<b>*</b></label>
+                            <input type="date" class="form-control" name="dtNascimentoAlt" id="dtNascimentoAlt" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Sexo<b>*</b></label>
+                            <select class="form-control" name="selSexoAlt" id="selSexoAlt">
+                                <option value="0" selected>Selecione</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                                <option value="O">Outro(s)</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>CEP  <img src="https://img.icons8.com/flat_round/15/000000/info.png" data-toggle="tooltip" data-placement="top" title="Insira o CEP para busca automática" /></label>
+                            <input type="text" class="form-control" name="txtCepAlt" id="txtCepAlt" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Endereço</label>
+                            <input type="text" class="form-control" name="txtEnderecoAlt" id="txtEnderecoAlt" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Número</label>
+                            <input type="text" class="form-control" name="txtNumeroAlt" id="txtNumeroAlt" maxlength="10" onkeypress="return isNumberKey(event)" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Complemento</label>
+                            <input type="text" class="form-control" name="txtComplementoAlt" id="txtComplementoAlt" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Bairro</label>
+                            <input type="text" class="form-control" name="txtBairroAlt" id="txtBairroAlt" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Cidade</label>
+                            <input type="text" class="form-control" name="txtCidadeAlt" id="txtCidadeAlt" />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Estado</label>
+                            <input type="text" class="form-control" name="txtEstadoAlt" id="txtEstadoAlt" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="alterar_cliente"> Salvar</button>
+                <button type="button" id="btnVoltar" data-dismiss="modal" class="btn btn-danger"> Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=" modal fade modal_confirm" id="modalNovoRegistro">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Novo Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nome<b>*</b></label>
+                            <input type="text" class="form-control" name="txtNome" id="txtNome" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Data de Nascimento<b>*</b></label>
+                            <input type="date" class="form-control" name="dtNascimento" id="dtNascimento" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Sexo<b>*</b></label>
+                            <select class="form-control" name="selSexo" id="selSexo">
+                                <option value="0" selected>Selecione</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                                <option value="O">Outro(s)</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>CEP  <img src="https://img.icons8.com/flat_round/15/000000/info.png" data-toggle="tooltip" data-placement="top" title="Insira o CEP para busca automática" /></label>
+                            <input type="text" class="form-control" name="txtCep" id="txtCep" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Endereço</label>
+                            <input type="text" class="form-control" name="txtEndereco" id="txtEndereco" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Número</label>
+                            <input type="text" class="form-control" name="txtNumero" id="txtNumero" maxlength="10" onkeypress="return isNumberKey(event)" required />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Complemento</label>
+                            <input type="text" class="form-control" name="txtComplemento" id="txtComplemento" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Bairro</label>
+                            <input type="text" class="form-control" name="txtBairro" id="txtBairro" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Cidade</label>
+                            <input type="text" class="form-control" name="txtCidade" id="txtCidade" />
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Estado</label>
+                            <input type="text" class="form-control" name="txtEstado" id="txtEstado" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="salvar_cliente">Inserir</button>
+                <button type="button" id="btnVoltar" data-dismiss="modal" class="btn btn-danger"> Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=" modal fade modal_confirm" id="modalConfirmarExclusaoCliente">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Excluir Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    A confirmação resultará na exclusão permanente do item.
+                    <br /><br />
+                    Tem certeza que deseja excluir este cliente ?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="delete_cliente">SIM</button>
+                <button type="button" id="btnVoltar" data-dismiss="modal" class="btn btn-danger">NÃO</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/scripts/cliente.js"></script>
+}
+

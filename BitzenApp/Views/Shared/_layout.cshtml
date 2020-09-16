@@ -1,0 +1,80 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+    <!doctype html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="~/css/all.css">
+        <link rel="stylesheet" href="~/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/StyleSheet.css">
+        <link rel="stylesheet" href="~/css/pendencia.css">
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+
+
+        <link rel="stylesheet" href="~/css/bootadmin.min.css">
+        <link href="~/css/toastr.min.css" rel="stylesheet" />
+        <link href="~/js/Chart.js/Chart.css" rel="stylesheet" />
+        <link href="~/css/print.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" media="screen" href="~/css/simulacao.css" />
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+        <title>Gestão de Clientes | Prova</title>
+    </head>
+    <body class="bg-light">
+
+        <nav class="navbar navbar-expand navbar-dark bg-primary d-print-none">
+            <a class="sidebar-toggle mr-3" href="#"><i class="fa fa-bars"></i></a>
+            <a class="navbar-brand" href="#">Gestão de Clientes</a>
+
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav ml-auto">
+                    @*<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-envelope"></i> 5</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-bell"></i> 3</a></li>*@
+                   
+                </ul>
+            </div>
+        </nav>
+
+        <div class="d-flex">
+            <div id="barraLateral" class="sidebar sidebar-dark bg-dark d-print-none">
+                <ul class="list-unstyled">
+                    <li>
+                        <a asp-area="" asp-controller="Cliente" asp-action="Index"><i class="fa fa-fw fa fa-user"></i> Clientes</a>
+                       
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content p-4">
+
+                <div class="modal fade" tabindex="-1" role="dialog" id="divLoader">
+                    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+                        <span class="fa fa-spinner fa-spin fa-3x"></span>
+                    </div>
+                </div>
+
+                @RenderBody()
+            </div>
+        </div>
+
+        <script src="~/js/jquery.min.js"></script>
+        <script src="~/js/jquery.mask.min.js"></script>
+        <script src="~/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/bootadmin.min.js"></script>
+        <script src="~/js/datatables.min.js"></script>
+        <script src="~/scripts/util.js"></script>
+        <script src="~/scripts/constantes.js"></script>
+        <script src="~/js/toastr.min.js"></script>
+        <script src="~/js/moment.min.js"></script>
+        <script src="~/js/Chart.js/Chart.js"></script>
+        <script src="~/js/print.min.js"></script>
+        <script src="~/js/html2pdf.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script src="~/js/all.js"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>

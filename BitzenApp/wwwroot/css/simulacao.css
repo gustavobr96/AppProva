@@ -1,0 +1,43 @@
+﻿.simulacao {
+    border: solid 1px #808080;
+}
+
+.imagenscabecalho {
+    max-width: 100%;
+    max-height: 70px;
+}
+
+.cabecalho {
+    align-items: center;
+}
+
+    .cabecalho .divs p{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+.divs {
+    display: flex;
+    float: left;
+}
+
+.separa {
+    border-right: solid 1px #808080;
+}
+
+.row .simulacao {
+    min-height: 45px;
+}
+
+.row p {
+    font-size: 12px;
+}
+
+.emp {
+    align-items: center;
+}
+
+    .emp p {
+        font-size: 16px;
+    }
+
