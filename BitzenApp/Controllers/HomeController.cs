@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BitzenApp.Controllers
 {
-    [Route("Home")]
+
     public class HomeController : Controller
     {
     
